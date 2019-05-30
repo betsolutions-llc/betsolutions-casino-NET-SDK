@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using Betsolutions.Casino.SDK.Exceptions;
-using Betsolutions.Casino.SDK.Internal.DTO;
 using Betsolutions.Casino.SDK.Internal.DTO.Game;
 using RestSharp;
 
@@ -35,7 +34,7 @@ namespace Betsolutions.Casino.SDK.Internal.Repositories
 
             if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
             {
-                throw new CantConnectToServerException(response.StatusCode, response.Content);
+                throw new CantConnectToServerException(response);
             }
 
             return response.Data;

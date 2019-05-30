@@ -36,7 +36,7 @@ namespace Betsolutions.Casino.SDK.Internal.Repositories
 
             if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
             {
-                throw new CantConnectToServerException(response.StatusCode, response.Content);
+                throw new CantConnectToServerException(response);
             }
 
             return response.Data;

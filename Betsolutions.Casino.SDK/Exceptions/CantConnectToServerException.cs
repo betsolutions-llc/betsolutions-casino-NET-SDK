@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Net;
+using RestSharp;
 
 namespace Betsolutions.Casino.SDK.Exceptions
 {
-    public class CantConnectToServerException : Exception
+    public sealed class CantConnectToServerException : Exception
     {
-        public CantConnectToServerException(HttpStatusCode httpStatusCode)
+        internal CantConnectToServerException(HttpStatusCode httpStatusCode)
         {
             HttpStatusCode = httpStatusCode;
         }
 
-        public CantConnectToServerException(HttpStatusCode httpStatusCode, string content)
+        internal CantConnectToServerException(IRestResponse response)
         {
-            HttpStatusCode = httpStatusCode;
-            Content = content;
+            HttpStatusCode = response.StatusCode;
+            Content = response.Content;
+            ResponseUri = response.ResponseUri.ToString();
+            StatusDescription = response.StatusDescription;
         }
 
-        public HttpStatusCode HttpStatusCode { get; set; }
-        public string Content { get; set; }
+        public HttpStatusCode HttpStatusCode { get; }
+        public string Content { get; }
+        public string ResponseUri { get; }
+        public string StatusDescription { get; }
     }
 }
