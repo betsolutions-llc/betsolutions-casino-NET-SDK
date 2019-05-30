@@ -1,7 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>zdfghdfgdg</Description>
+    <PackageProjectUrl>argfag</PackageProjectUrl>
+    <PackageIconUrl>argag</PackageIconUrl>
+    <PackageTags>argag</PackageTags>
+    <PackageReleaseNotes>gaergaegagaeg</PackageReleaseNotes>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>0.3.3</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Slots\Campaigns\" />
+    <Folder Include="TableGames\Bura\" />
+    <Folder Include="TableGames\Dominoes\" />
+    <Folder Include="TableGames\Okey\" />
+    <Folder Include="TableGames\Seka\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="106.6.9" />
+  </ItemGroup>
 
 </Project>
