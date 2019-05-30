@@ -2,14 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>zdfghdfgdg</Description>
-    <PackageProjectUrl>argfag</PackageProjectUrl>
-    <PackageIconUrl>argag</PackageIconUrl>
-    <PackageTags>argag</PackageTags>
-    <PackageReleaseNotes>gaergaegagaeg</PackageReleaseNotes>
+    <Description>Betsolutions Casino SDK</Description>
+    <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageTags>Betsolutions</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <Version>0.3.4</Version>
+    <Company>Betsolutions</Company>
+    <Authors>Betsolutions</Authors>
+    <Product />
   </PropertyGroup>
 
   <ItemGroup>
