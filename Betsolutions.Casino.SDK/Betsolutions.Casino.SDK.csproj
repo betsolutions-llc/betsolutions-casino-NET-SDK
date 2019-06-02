@@ -6,10 +6,10 @@
     <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
     <PackageIconUrl>http://static.betsolutions.com/casino.assets/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
-    <PackageReleaseNotes>fix get rake response handling</PackageReleaseNotes>
+    <PackageReleaseNotes>minor bug fixes</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>0.3.8</Version>
+    <Version>0.3.9</Version>
     <Company>Betsolutions</Company>
     <Authors>Betsolutions</Authors>
     <Product />
