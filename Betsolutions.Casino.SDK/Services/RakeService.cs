@@ -73,7 +73,8 @@ namespace Betsolutions.Casino.SDK.Services
                         Amount = i.Amount,
                         Date = i.Date,
                         MerchantPlayerId = i.MerchantPlayerId,
-                        PlayerId = i.PlayerId
+                        PlayerId = i.PlayerId,
+                        GameId = i.GameId
                     })
                 }
             };
