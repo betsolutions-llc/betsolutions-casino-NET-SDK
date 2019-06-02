@@ -1,6 +1,6 @@
 ﻿namespace Betsolutions.Casino.SDK.DTO.Rake
 {
-    public class RakeItem
+    public class RakeDetailedItem
     {
         public int Amount { get; set; }
         public int PlayerId { get; set; }
