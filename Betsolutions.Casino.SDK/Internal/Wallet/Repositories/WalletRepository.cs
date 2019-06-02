@@ -33,7 +33,7 @@ namespace Betsolutions.Casino.SDK.Internal.Wallet.Repositories
 
             var response = client.Execute<DepositResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }
@@ -62,7 +62,7 @@ namespace Betsolutions.Casino.SDK.Internal.Wallet.Repositories
 
             var response = client.Execute<WithdrawResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }
@@ -91,7 +91,7 @@ namespace Betsolutions.Casino.SDK.Internal.Wallet.Repositories
 
             var response = client.Execute<GetBalanceResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }

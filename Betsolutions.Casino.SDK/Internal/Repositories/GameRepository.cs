@@ -32,7 +32,7 @@ namespace Betsolutions.Casino.SDK.Internal.Repositories
 
             var response = client.Execute<GetGamesResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }

@@ -34,7 +34,7 @@ namespace Betsolutions.Casino.SDK.Internal.Repositories
 
             var response = client.Execute<GetRakeResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }
@@ -64,7 +64,7 @@ namespace Betsolutions.Casino.SDK.Internal.Repositories
 
             var response = client.Execute<GetRakeDetailedResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 throw new CantConnectToServerException(response);
             }

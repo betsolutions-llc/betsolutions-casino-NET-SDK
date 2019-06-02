@@ -38,7 +38,7 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
             request.AddJsonBody(searchModel);
             var response = client.Execute<GetTournamentsResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 return new GetTournamentsResponseContainer { StatusCode = 0 };
             }
@@ -61,7 +61,7 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
 
             var response = client.Execute<GetTournamentTypesResponseContainer>(request);
 
-            if (response.ResponseStatus != ResponseStatus.Completed || response.StatusCode != HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 return new GetTournamentTypesResponseContainer { StatusCode = 0 };
             }
