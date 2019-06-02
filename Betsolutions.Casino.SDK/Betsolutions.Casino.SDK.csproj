@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Betsolutions Casino SDK</Description>
     <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageIconUrl>http://static.betsolutions.com/casino.assets/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>0.3.4</Version>
+    <Version>0.3.5</Version>
     <Company>Betsolutions</Company>
     <Authors>Betsolutions</Authors>
     <Product />
