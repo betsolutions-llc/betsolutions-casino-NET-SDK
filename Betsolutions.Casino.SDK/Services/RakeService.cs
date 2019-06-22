@@ -4,7 +4,7 @@ using Betsolutions.Casino.SDK.Internal.Repositories;
 
 namespace Betsolutions.Casino.SDK.Services
 {
-    public sealed class RakeService
+    public sealed class RakeService : BaseService
     {
         private readonly RakeRepository _rakeRepository;
         private readonly MerchantAuthInfo _merchantAuthInfo;
@@ -18,10 +18,10 @@ namespace Betsolutions.Casino.SDK.Services
         {
             var result = _rakeRepository.GetRake(new Internal.DTO.Rake.GetRakeRequest
             {
-                FromDate = request.FromDate?.ToString("MM-dd-yyyy HH:mm:ss"),
+                FromDate = request.FromDate?.ToString(_configService.GetDateTimeFormat()),
                 GameId = request.GameId,
                 MerchantId = _merchantAuthInfo.MerchantId,
-                ToDate = request.ToDate?.ToString("MM-dd-yyyy HH:mm:ss"),
+                ToDate = request.ToDate?.ToString(_configService.GetDateTimeFormat()),
                 UserId = request.UserId
             });
 
@@ -51,10 +51,10 @@ namespace Betsolutions.Casino.SDK.Services
         {
             var result = _rakeRepository.GetRakeDetailed(new Internal.DTO.Rake.GetRakeDetailedRequest
             {
-                FromDate = request.FromDate?.ToString("MM-dd-yyyy HH:mm:ss"),
+                FromDate = request.FromDate?.ToString(_configService.GetDateTimeFormat()),
                 GameId = request.GameId,
                 MerchantId = _merchantAuthInfo.MerchantId,
-                ToDate = request.ToDate?.ToString("MM-dd-yyyy HH:mm:ss"),
+                ToDate = request.ToDate?.ToString(_configService.GetDateTimeFormat()),
                 UserId = request.UserId
             });
 

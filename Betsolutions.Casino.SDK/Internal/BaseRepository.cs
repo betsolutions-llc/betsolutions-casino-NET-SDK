@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using Betsolutions.Casino.SDK.Internal.Services;
 
 namespace Betsolutions.Casino.SDK.Internal
 {
@@ -8,6 +9,7 @@ namespace Betsolutions.Casino.SDK.Internal
     {
         protected readonly MerchantAuthInfo AuthInfo;
         protected string Controller;
+        internal ConfigService _configService = new ConfigService();
 
         internal BaseRepository(MerchantAuthInfo authInfo, string controller)
         {

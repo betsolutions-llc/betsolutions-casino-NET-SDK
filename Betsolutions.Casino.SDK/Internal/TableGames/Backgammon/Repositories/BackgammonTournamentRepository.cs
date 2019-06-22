@@ -25,9 +25,11 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
                 Method = Method.POST
             };
 
-            var rawHash = $"{searchModel.MerchantId}|{searchModel.EndDateTo?.ToString("MM-dd-yyyy HH:mm:ss")}|{searchModel.EndDateFrom?.ToString("MM-dd-yyyy HH:mm:ss")}";
+            var dateTimeFormat = _configService.GetDateTimeFormat();
+
+            var rawHash = $"{searchModel.MerchantId}|{searchModel.EndDateTo?.ToString(dateTimeFormat)}|{searchModel.EndDateFrom?.ToString(dateTimeFormat)}";
             rawHash += $"|{searchModel.GameTypeId}|{searchModel.OrderingDirection}|{searchModel.OrderingField}|{searchModel.PageIndex}|{searchModel.PageSize}";
-            rawHash += $"|{searchModel.StartDateFrom?.ToString("MM-dd-yyyy HH:mm:ss")}|{searchModel.StartDateTo?.ToString("MM-dd-yyyy HH:mm:ss")}";
+            rawHash += $"|{searchModel.StartDateFrom?.ToString(dateTimeFormat)}|{searchModel.StartDateTo?.ToString(dateTimeFormat)}";
             rawHash += $"|{searchModel.TournamentTypeId}";
             rawHash += $"|{AuthInfo.PrivateKey}";
             var hash = GetSha256(rawHash);
