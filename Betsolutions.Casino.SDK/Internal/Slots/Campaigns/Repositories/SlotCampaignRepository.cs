@@ -64,5 +64,39 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Repositories
 
             return response.Data;
         }
+
+        public DeactivateSlotCampaignResponseContainer DeactivateSlotCampaign(SDK.Slots.Campaigns.DTO.DeactivateSlotCampaignRequest model){
+
+            var client = new RestClient
+            {
+                BaseUrl = new Uri($"{AuthInfo.BaseUrl}/{Controller}")
+            };
+
+            var request = new RestRequest
+            {
+                Resource = "DeactivateSlotCampaign",
+                Method = Method.POST
+            };
+
+            var requestBody = new DeactivateSlotCampaign
+            {
+                MerchantId = AuthInfo.MerchantId,
+                Id = model.Id
+            };
+
+            var rawHash = $"{requestBody.MerchantId}|{requestBody.Id}|{AuthInfo.PrivateKey}";
+            var hash = GetSha256(rawHash);
+            requestBody.Hash = hash;
+
+            request.AddJsonBody(requestBody);
+            var response = client.Execute<DeactivateSlotCampaignResponseContainer>(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new CantConnectToServerException(response);
+            }
+
+            return response.Data;
+        }
     }
 }

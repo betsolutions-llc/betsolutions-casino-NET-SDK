@@ -55,5 +55,15 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
                 }
             };
         }
+
+        public DeactivateSlotCampaignResponseContainer DeactivateSlotCampaign(DeactivateSlotCampaignRequest request)
+        {
+            var result = _slotCampaignRepository.DeactivateSlotCampaign(request);
+
+            return new DeactivateSlotCampaignResponseContainer
+            {
+                StatusCode = result.StatusCode
+            };
+        }
     }
 }
