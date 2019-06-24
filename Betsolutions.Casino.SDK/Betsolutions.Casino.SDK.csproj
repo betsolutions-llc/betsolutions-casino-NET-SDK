@@ -16,7 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Slots\Campaigns\" />
     <Folder Include="TableGames\Bura\" />
     <Folder Include="TableGames\Dominoes\" />
     <Folder Include="TableGames\Okey\" />
@@ -24,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="RestSharp" Version="106.6.9" />
   </ItemGroup>
 
