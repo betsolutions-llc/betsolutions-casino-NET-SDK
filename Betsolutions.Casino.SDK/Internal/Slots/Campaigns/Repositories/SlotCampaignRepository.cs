@@ -37,12 +37,12 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories
                     Currency = i.Currency
                 }),
                 CampaignTypeId = (int)campaign.CampaignType,
-                EndDate = campaign.EndDate.ToString("MM-dd-yyyy HH:mm:ss"),
+                EndDate = campaign.EndDate.ToString(ConfigService.GetDateTimeFormat()),
                 FreespinCount = campaign.FreeSpinCount,
                 GameId = campaign.GameId,
                 Name = campaign.Name,
                 PlayerIds = campaign.PlayerIds.Select(i => i),
-                StartDate = campaign.StartDate.ToString("MM-dd-yyyy HH:mm:ss"),
+                StartDate = campaign.StartDate.ToString(ConfigService.GetDateTimeFormat()),
                 AddNewlyRegisteredPlayers = campaign.AddNewlyRegisteredPlayers,
                 MerchantId = AuthInfo.MerchantId
             };
