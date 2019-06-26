@@ -4,6 +4,6 @@ namespace Betsolutions.Casino.SDK.Services
 {
     public abstract class BaseService
     {
-        internal ConfigService _configService = new ConfigService();
+        internal readonly ConfigService ConfigService = new ConfigService();
     }
 }

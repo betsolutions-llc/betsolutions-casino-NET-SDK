@@ -6,7 +6,7 @@ using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.DTO;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace Betsolutions.Casino.SDK.Internal.Slots.Repositories
+namespace Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories
 {
     internal class SlotCampaignRepository : BaseRepository
     {
@@ -36,9 +36,9 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Repositories
                     CoinValueId = i.CoinValueId,
                     Currency = i.Currency
                 }),
-                CampaignTypeId = campaign.CampaignTypeId,
+                CampaignTypeId = (int)campaign.CampaignType,
                 EndDate = campaign.EndDate.ToString("MM-dd-yyyy HH:mm:ss"),
-                FreespinCount = campaign.FreespinCount,
+                FreespinCount = campaign.FreeSpinCount,
                 GameId = campaign.GameId,
                 Name = campaign.Name,
                 PlayerIds = campaign.PlayerIds.Select(i => i),

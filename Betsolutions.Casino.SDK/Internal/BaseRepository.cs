@@ -8,8 +8,8 @@ namespace Betsolutions.Casino.SDK.Internal
     internal class BaseRepository
     {
         protected readonly MerchantAuthInfo AuthInfo;
-        protected string Controller;
-        internal ConfigService _configService = new ConfigService();
+        protected readonly string Controller;
+        protected readonly ConfigService ConfigService = new ConfigService();
 
         internal BaseRepository(MerchantAuthInfo authInfo, string controller)
         {

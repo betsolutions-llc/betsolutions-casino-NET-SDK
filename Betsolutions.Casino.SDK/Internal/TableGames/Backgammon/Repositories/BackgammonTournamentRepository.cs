@@ -25,7 +25,7 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
                 Method = Method.POST
             };
 
-            var dateTimeFormat = _configService.GetDateTimeFormat();
+            var dateTimeFormat = ConfigService.GetDateTimeFormat();
 
             var rawHash = $"{searchModel.MerchantId}|{searchModel.EndDateTo?.ToString(dateTimeFormat)}|{searchModel.EndDateFrom?.ToString(dateTimeFormat)}";
             rawHash += $"|{searchModel.GameTypeId}|{searchModel.OrderingDirection}|{searchModel.OrderingField}|{searchModel.PageIndex}|{searchModel.PageSize}";

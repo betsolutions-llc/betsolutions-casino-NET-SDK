@@ -1,5 +1,5 @@
 ﻿using System;
-using Betsolutions.Casino.SDK.Internal.Slots.Repositories;
+using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories;
 using Betsolutions.Casino.SDK.Services;
 using Betsolutions.Casino.SDK.Slots.Campaigns.DTO;
 
@@ -7,13 +7,11 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
 {
     public class SlotCampaignService : BaseService
     {
-        private readonly MerchantAuthInfo _authInfo;
         private readonly SlotCampaignRepository _slotCampaignRepository;
 
         public SlotCampaignService(MerchantAuthInfo authInfo)
         {
-            _authInfo = authInfo;
-            _slotCampaignRepository = new SlotCampaignRepository(_authInfo);
+            _slotCampaignRepository = new SlotCampaignRepository(authInfo);
         }
 
         public CreateSlotCampaignResponseContainer CreateCampaign(CreateSlotCampaignRequest request)
@@ -27,12 +25,12 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
                 };
             }
 
-            if (request.StartDate < DateTime.Now.AddMinutes(1))
+            if (request.StartDate < DateTime.Now)
             {
                 return new CreateSlotCampaignResponseContainer
                 {
                     StatusCode = 411,
-                    StatusMessage = "startdate must be more than current date"
+                    StatusMessage = "start date must be more than current date"
                 };
             }
 
