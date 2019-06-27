@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Betsolutions Casino SDK</Description>
     <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
-    <PackageIconUrl>http://static.betsolutions.com/casino.assets/betsolutions_256.png</PackageIconUrl>
+    <PackageIconUrl>https://static-cdn.betsolutions.com/casino/GameAssets/Prod/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
     <PackageReleaseNotes>added full support of slot campaigns</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
