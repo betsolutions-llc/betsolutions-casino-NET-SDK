@@ -98,5 +98,32 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories
 
             return response.Data;
         }
+
+        public GetSlotConfigsResponseContainer GetSlotConfigs()
+        {
+            var client = new RestClient
+            {
+                BaseUrl = new Uri($"{AuthInfo.BaseUrl}/{Controller}")
+            };
+
+            var request = new RestRequest
+            {
+                Resource = "GetMerchantSlotConfigs",
+                Method = Method.POST
+            };
+
+            var rawHash = $"{AuthInfo.MerchantId}|{AuthInfo.PrivateKey}";
+            var hash = GetSha256(rawHash);
+
+            request.AddJsonBody(new {AuthInfo.MerchantId, Hash = hash});
+            var response = client.Execute<GetSlotConfigsResponseContainer>(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new CantConnectToServerException(response);
+            }
+
+            return response.Data;
+        }
     }
 }

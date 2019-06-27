@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories;
 using Betsolutions.Casino.SDK.Services;
 using Betsolutions.Casino.SDK.Slots.Campaigns.DTO;
@@ -61,6 +62,33 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             return new DeactivateSlotCampaignResponseContainer
             {
                 StatusCode = result.StatusCode
+            };
+        }
+
+        public GetSlotConfigsResponseContainer GetSlotConfigs()
+        {
+            var result = _slotCampaignRepository.GetSlotConfigs();
+
+            if (result.StatusCode != 200)
+            {
+                return new GetSlotConfigsResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
+            }
+
+            return new GetSlotConfigsResponseContainer
+            {
+                StatusCode = (StatusCodes) result.StatusCode,
+                Data = new GetSlotConfigsResponse
+                {
+                    Configs = result.Data.SlotConfigs.Select(i => new SlotConfig
+                    {
+                        CoinValue = i.CoinValue,
+                        Currency = i.Currency,
+                        Id = i.Id,
+                        LineMultiplier = i.LineMultiplier,
+                        Lines = i.Lines,
+                        SlotId = i.SlotId
+                    }).ToList()
+                }
             };
         }
     }
