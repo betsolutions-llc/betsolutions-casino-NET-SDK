@@ -20,12 +20,12 @@ namespace Betsolutions.Casino.SDK.Services
 
             if (200 != result.StatusCode)
             {
-                return new GetGamesResponseContainer { StatusCode = result.StatusCode };
+                return new GetGamesResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new GetGamesResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new GetGamesResponse
                 {
                     Products = result.Data.Products.Select(p => new Product

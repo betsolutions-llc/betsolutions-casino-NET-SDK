@@ -27,12 +27,12 @@ namespace Betsolutions.Casino.SDK.Services
 
             if (200 != result.StatusCode)
             {
-                return new GetRakeResponseContainer { StatusCode = result.StatusCode };
+                return new GetRakeResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new GetRakeResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new GetRakeResponse
                 {
                     RakeData = result.Data.RakeData.Select(i => new RakeItem
@@ -60,12 +60,12 @@ namespace Betsolutions.Casino.SDK.Services
 
             if (200 != result.StatusCode)
             {
-                return new GetRakeDetailedResponseContainer { StatusCode = result.StatusCode };
+                return new GetRakeDetailedResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new GetRakeDetailedResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new GetRakeDetailedResponse
                 {
                     RakeData = result.Data.RakeData.Select(i => new RakeDetailedItem

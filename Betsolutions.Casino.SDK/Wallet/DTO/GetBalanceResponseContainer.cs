@@ -2,7 +2,7 @@
 {
     public class GetBalanceResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public GetBalanceResponse Data { get; set; }
     }
 }

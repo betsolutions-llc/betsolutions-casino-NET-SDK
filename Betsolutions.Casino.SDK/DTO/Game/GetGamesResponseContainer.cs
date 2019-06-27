@@ -2,7 +2,7 @@
 {
     public class GetGamesResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public GetGamesResponse Data { get; set; }
     }
 }

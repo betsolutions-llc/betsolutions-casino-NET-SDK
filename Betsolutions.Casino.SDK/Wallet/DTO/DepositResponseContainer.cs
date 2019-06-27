@@ -2,7 +2,7 @@
 {
     public class DepositResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public DepositResponse Data { get; set; }
     }
 }

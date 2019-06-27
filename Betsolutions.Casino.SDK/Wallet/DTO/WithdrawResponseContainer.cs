@@ -2,7 +2,7 @@
 {
     public class WithdrawResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public WithdrawResponse Data { get; set; }
     }
 }

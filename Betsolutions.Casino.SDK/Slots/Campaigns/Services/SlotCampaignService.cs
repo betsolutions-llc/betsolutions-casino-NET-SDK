@@ -32,7 +32,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             {
                 return new CreateSlotCampaignResponseContainer
                 {
-                    StatusCode = 411,
+                    StatusCode = StatusCodes.InvalidRequest,
                     StatusMessage = "min name length: 10"
                 };
             }
@@ -41,7 +41,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             {
                 return new CreateSlotCampaignResponseContainer
                 {
-                    StatusCode = 411,
+                    StatusCode = StatusCodes.InvalidRequest,
                     StatusMessage = "start date must be more than current date"
                 };
             }
@@ -52,13 +52,13 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             {
                 return new CreateSlotCampaignResponseContainer
                 {
-                    StatusCode = result.StatusCode
+                    StatusCode = (StatusCodes)result.StatusCode
                 };
             }
 
             return new CreateSlotCampaignResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new CreateSlotCampaignResponse
                 {
                     CampaignId = result.Data.CampaignId
@@ -72,7 +72,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
 
             return new DeactivateSlotCampaignResponseContainer
             {
-                StatusCode = result.StatusCode
+                StatusCode = (StatusCodes)result.StatusCode
             };
         }
 

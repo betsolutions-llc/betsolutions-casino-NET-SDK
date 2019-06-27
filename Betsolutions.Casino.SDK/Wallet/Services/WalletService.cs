@@ -28,12 +28,12 @@ namespace Betsolutions.Casino.SDK.Wallet.Services
 
             if (200 != result.StatusCode)
             {
-                return new DepositResponseContainer { StatusCode = result.StatusCode };
+                return new DepositResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new DepositResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new DepositResponse
                 {
                     TransactionId = result.Data.TransactionId,
@@ -56,12 +56,12 @@ namespace Betsolutions.Casino.SDK.Wallet.Services
 
             if (200 != result.StatusCode)
             {
-                return new WithdrawResponseContainer { StatusCode = result.StatusCode };
+                return new WithdrawResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new WithdrawResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new WithdrawResponse
                 {
                     TransactionId = result.Data.TransactionId,
@@ -82,12 +82,12 @@ namespace Betsolutions.Casino.SDK.Wallet.Services
 
             if (200 != result.StatusCode)
             {
-                return new GetBalanceResponseContainer { StatusCode = result.StatusCode };
+                return new GetBalanceResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new GetBalanceResponseContainer
             {
-                StatusCode = result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new GetBalanceResponse
                 {
                     Balance = result.Data.Balance

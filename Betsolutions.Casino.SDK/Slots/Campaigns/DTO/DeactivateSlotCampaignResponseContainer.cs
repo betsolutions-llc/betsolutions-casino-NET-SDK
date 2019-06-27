@@ -2,7 +2,7 @@
 {
     public class DeactivateSlotCampaignResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public string StatusMessage { get; set; }
     }
 }

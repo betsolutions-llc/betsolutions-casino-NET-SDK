@@ -2,7 +2,7 @@
 {
     public class GetRakeResponseContainer
     {
-        public int StatusCode { get; set; }
+        public StatusCodes StatusCode { get; set; }
         public GetRakeResponse Data { get; set; }
     }
 }
