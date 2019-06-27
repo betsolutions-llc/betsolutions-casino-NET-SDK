@@ -125,5 +125,38 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories
 
             return response.Data;
         }
+
+        public GetSlotCampaignsResponseContainer GetSlotCampaigns(GetSlotCampaignsRequestModel model)
+        {
+            var client = new RestClient
+            {
+                BaseUrl = new Uri($"{AuthInfo.BaseUrl}/{Controller}")
+            };
+
+            var request = new RestRequest
+            {
+                Resource = "GetSlotCampaigns",
+                Method = Method.POST
+            };
+
+            model.MerchantId = AuthInfo.MerchantId;
+
+            var dateTimeFormat = ConfigService.GetDateTimeFormat();
+
+            var rawHash = $"{model.MerchantId}|{model.CampaignId}|{model.EndDateFrom?.ToString(dateTimeFormat)}|{model.EndDateTo?.ToString(dateTimeFormat)}|{model.StartDateFrom?.ToString(dateTimeFormat)}|{model.StartDateTo?.ToString(dateTimeFormat)}|{model.StatusId}";
+            rawHash += $"|{model.GameId}|{model.Name}|{model.OrderingDirection}|{model.OrderingField}|{model.PageIndex}|{model.PageSize}|{AuthInfo.PrivateKey}";
+            var hash = GetSha256(rawHash);
+            model.Hash = hash;
+
+            request.AddJsonBody(model);
+            var response = client.Execute<GetSlotCampaignsResponseContainer>(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new CantConnectToServerException(response);
+            }
+
+            return response.Data;
+        }
     }
 }

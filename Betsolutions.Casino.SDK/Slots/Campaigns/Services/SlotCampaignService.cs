@@ -1,8 +1,18 @@
 ﻿using System;
 using System.Linq;
+using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.DTO;
 using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories;
 using Betsolutions.Casino.SDK.Services;
 using Betsolutions.Casino.SDK.Slots.Campaigns.DTO;
+using Betsolutions.Casino.SDK.Slots.Campaigns.Enums;
+using CreateSlotCampaignResponse = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.CreateSlotCampaignResponse;
+using CreateSlotCampaignResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.CreateSlotCampaignResponseContainer;
+using DeactivateSlotCampaignResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.DeactivateSlotCampaignResponseContainer;
+using GetSlotCampaignsResponse = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.GetSlotCampaignsResponse;
+using GetSlotCampaignsResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.GetSlotCampaignsResponseContainer;
+using GetSlotConfigsResponse = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.GetSlotConfigsResponse;
+using GetSlotConfigsResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.GetSlotConfigsResponseContainer;
+using SlotCampaignsPagingResult = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.SlotCampaignsPagingResult;
 
 namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
 {
@@ -76,7 +86,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
 
             return new GetSlotConfigsResponseContainer
             {
-                StatusCode = (StatusCodes) result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new GetSlotConfigsResponse
                 {
                     Configs = result.Data.SlotConfigs.Select(i => new SlotConfig
@@ -88,6 +98,55 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
                         Lines = i.Lines,
                         SlotId = i.SlotId
                     }).ToList()
+                }
+            };
+        }
+
+        public GetSlotCampaignsResponseContainer GetSlotCampaigns(SlotCampaignsSearchModel searchModel)
+        {
+            var result = _slotCampaignRepository.GetSlotCampaigns(new GetSlotCampaignsRequestModel
+            {
+                CampaignId = searchModel.CampaignId,
+                EndDateFrom = searchModel.EndDateFrom,
+                EndDateTo = searchModel.EndDateTo,
+                GameId = searchModel.GameId,
+                Name = searchModel.Name,
+                OrderingDirection = searchModel.OrderingDirection,
+                OrderingField = searchModel.OrderingField,
+                PageIndex = searchModel.PageIndex,
+                PageSize = searchModel.PageSize,
+                StartDateFrom = searchModel.StartDateFrom,
+                StartDateTo = searchModel.StartDateTo,
+                StatusId = (int?)searchModel.Status
+            });
+
+            if (result.StatusCode != 200)
+            {
+                return new GetSlotCampaignsResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
+            }
+
+            return new GetSlotCampaignsResponseContainer
+            {
+                StatusCode = (StatusCodes)result.StatusCode,
+                Data = new GetSlotCampaignsResponse
+                {
+                    SlotCampaignsPagingResult = new SlotCampaignsPagingResult
+                    {
+                        TotalCount = result.Data.SlotCampaignsPagingResult.TotalCount,
+                        Campaigns = result.Data.SlotCampaignsPagingResult.Campaigns.Select(i => new SlotCampaign
+                        {
+                            CampaignType = (CampaignType)i.CampaignTypeId,
+                            EndDate = i.EndDate,
+                            FilteredCount = i.FilteredCount,
+                            FreeSpinCount = i.FreespinCount,
+                            GameId = i.GameId,
+                            Id = i.Id,
+                            Name = i.Name,
+                            PlayerCount = i.PlayerCount,
+                            StartDate = i.StartDate,
+                            Status = (CampaignStatus)i.StatusId
+                        }).ToList()
+                    }
                 }
             };
         }
