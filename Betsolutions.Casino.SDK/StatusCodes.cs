@@ -14,6 +14,7 @@
         DuplicatedTransactionId = 408,
         SessionExpired = 409,
         InvalidCurrency = 410,
+        InvalidRequest = 411,
         GeneralError = 500,
     }
 }

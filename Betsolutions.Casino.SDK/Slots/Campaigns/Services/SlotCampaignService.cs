@@ -5,6 +5,7 @@ using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories;
 using Betsolutions.Casino.SDK.Services;
 using Betsolutions.Casino.SDK.Slots.Campaigns.DTO;
 using Betsolutions.Casino.SDK.Slots.Campaigns.Enums;
+using AddPlayersToCampaignResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.AddPlayersToCampaignResponseContainer;
 using CreateSlotCampaignResponse = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.CreateSlotCampaignResponse;
 using CreateSlotCampaignResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.CreateSlotCampaignResponseContainer;
 using DeactivateSlotCampaignResponseContainer = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.DeactivateSlotCampaignResponseContainer;
@@ -149,6 +150,35 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
                     }
                 }
             };
+        }
+
+        public AddPlayersToCampaignResponseContainer AddPlayersToCampaign(AddPlayersToCampaignRequest request)
+        {
+            if (request.CampaignId < 1)
+            {
+                return new AddPlayersToCampaignResponseContainer
+                {
+                    StatusCode = StatusCodes.InvalidRequest,
+                    StatusMessage = $"Invalid ${nameof(request.CampaignId)}"
+                };
+            }
+
+            if (null == request.PlayerIds || request.PlayerIds.Count < 1)
+            {
+                return new AddPlayersToCampaignResponseContainer
+                {
+                    StatusCode = StatusCodes.InvalidRequest,
+                    StatusMessage = $"{nameof(request.PlayerIds)} is empty"
+                };
+            }
+
+            var result = _slotCampaignRepository.AddPlayersToCampaign(new AddPlayerToCampaignRequestModel
+            {
+                CampaignId = request.CampaignId,
+                PlayerIds = request.PlayerIds.Select(i => i).ToList()
+            });
+
+            return new AddPlayersToCampaignResponseContainer { StatusCode = (StatusCodes)result.StatusCode };
         }
     }
 }

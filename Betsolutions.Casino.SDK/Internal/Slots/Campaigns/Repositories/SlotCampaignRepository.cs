@@ -155,6 +155,39 @@ namespace Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories
             {
                 throw new CantConnectToServerException(response);
             }
+            
+            return response.Data;
+        }
+
+        public AddPlayersToCampaignResponseContainer AddPlayersToCampaign(AddPlayerToCampaignRequestModel model)
+        {
+            var client = new RestClient
+            {
+                BaseUrl = new Uri($"{AuthInfo.BaseUrl}/{Controller}")
+            };
+
+            var request = new RestRequest
+            {
+                Resource = "AddPlayersToSlotCampaign",
+                Method = Method.POST
+            };
+
+            model.MerchantId = AuthInfo.MerchantId;
+
+            var rawHash = $"{model.CampaignId}";
+            rawHash += $"|{model.MerchantId}";
+            rawHash += $"|{JsonConvert.SerializeObject(model.PlayerIds)}";
+            rawHash += $"|{AuthInfo.PrivateKey}";
+            var hash = GetSha256(rawHash);
+            model.Hash = hash;
+
+            request.AddJsonBody(model);
+            var response = client.Execute<AddPlayersToCampaignResponseContainer>(request);
+
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new CantConnectToServerException(response);
+            }
 
             return response.Data;
         }
