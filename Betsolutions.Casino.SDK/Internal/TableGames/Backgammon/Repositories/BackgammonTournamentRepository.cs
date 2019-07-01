@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using Betsolutions.Casino.SDK.Exceptions;
 using Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.DTO.Tournament;
 using RestSharp;
 
@@ -16,7 +17,7 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
         {
             var client = new RestClient
             {
-                BaseUrl = new Uri(AuthInfo.BaseUrl)
+                BaseUrl = new Uri($"{AuthInfo.BaseUrl}/{Controller}")
             };
 
             var request = new RestRequest
@@ -27,6 +28,8 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
 
             var dateTimeFormat = ConfigService.GetDateTimeFormat();
 
+
+            searchModel.MerchantId = AuthInfo.MerchantId;
             var rawHash = $"{searchModel.MerchantId}|{searchModel.EndDateTo?.ToString(dateTimeFormat)}|{searchModel.EndDateFrom?.ToString(dateTimeFormat)}";
             rawHash += $"|{searchModel.GameTypeId}|{searchModel.OrderingDirection}|{searchModel.OrderingField}|{searchModel.PageIndex}|{searchModel.PageSize}";
             rawHash += $"|{searchModel.StartDateFrom?.ToString(dateTimeFormat)}|{searchModel.StartDateTo?.ToString(dateTimeFormat)}";
@@ -42,30 +45,7 @@ namespace Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                return new GetTournamentsResponseContainer { StatusCode = 0 };
-            }
-
-            return response.Data;
-        }
-
-        internal GetTournamentTypesResponseContainer GetTournamentTypes()
-        {
-            var client = new RestClient
-            {
-                BaseUrl = new Uri(AuthInfo.BaseUrl)
-            };
-
-            var request = new RestRequest
-            {
-                Resource = "GetTournamentTypes",
-                Method = Method.POST
-            };
-
-            var response = client.Execute<GetTournamentTypesResponseContainer>(request);
-
-            if (response.StatusCode != HttpStatusCode.OK)
-            {
-                return new GetTournamentTypesResponseContainer { StatusCode = 0 };
+                throw new CantConnectToServerException(response);
             }
 
             return response.Data;

@@ -1,6 +1,6 @@
 ﻿namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
 {
-    internal class TournamentPrize
+    public class BackgammonTournamentPrize
     {
         public int Id { get; set; }
         public int Percent { get; set; }

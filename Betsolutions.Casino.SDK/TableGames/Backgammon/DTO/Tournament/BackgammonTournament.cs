@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Betsolutions.Casino.SDK.TableGames.Backgammon.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
 {
-    internal class Tournament
+    public class BackgammonTournament
     {
         public int Id { get; set; }
         public decimal BetAmount { get; set; }
@@ -14,14 +15,14 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
         public int TournamentTypeId { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int StatusId { get; set; }
+        public BackgammonTournamentStatus Status { get; set; }
         public int GameTypeId { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsHidden { get; set; }
-        public IEnumerable<TournamentTranslation> Translations { get; set; }
+        public IEnumerable<BackgammonTournamentTranslation> Translations { get; set; }
         public int FilteredCount { get; set; }
         public bool IsNetwork { get; set; }
         public int FinalPoint { get; set; }
-        public IEnumerable<TournamentPrize> Prizes { get; set; }
+        public IEnumerable<BackgammonTournamentPrize> Prizes { get; set; }
     }
 }

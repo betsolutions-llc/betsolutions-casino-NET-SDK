@@ -2,9 +2,9 @@
 
 namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
 {
-    internal class TournamentPagingResult
+    public class BackgammonTournamentPagingResult
     {
         public int TotalCount { get; set; }
-        public IEnumerable<Tournament> Tournaments { get; set; }
+        public IEnumerable<BackgammonTournament> Tournaments { get; set; }
     }
 }
