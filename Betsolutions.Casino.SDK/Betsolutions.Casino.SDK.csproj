@@ -17,11 +17,8 @@
 
   <ItemGroup>
     <Compile Remove="TableGames\Dominoes\**" />
-    <Compile Remove="TableGames\Seka\**" />
     <EmbeddedResource Remove="TableGames\Dominoes\**" />
-    <EmbeddedResource Remove="TableGames\Seka\**" />
     <None Remove="TableGames\Dominoes\**" />
-    <None Remove="TableGames\Seka\**" />
   </ItemGroup>
 
   <ItemGroup>
