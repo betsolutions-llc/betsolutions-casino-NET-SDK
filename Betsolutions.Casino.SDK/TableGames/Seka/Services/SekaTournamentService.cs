@@ -7,13 +7,13 @@ using Betsolutions.Casino.SDK.TableGames.Seka.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Seka.Services
 {
-    public class SekaTournamentService
+    public sealed class SekaTournamentService
     {
-        private readonly SekaTournamentRepository _backgammonTournamentRepository;
+        private readonly SekaTournamentRepository _sekaTournamentRepository;
 
         public SekaTournamentService(MerchantAuthInfo merchantAuthInfo)
         {
-            _backgammonTournamentRepository = new SekaTournamentRepository(merchantAuthInfo);
+            _sekaTournamentRepository = new SekaTournamentRepository(merchantAuthInfo);
         }
 
         private string ValidateRequestModel(SekaTournamentsFilter filter)
@@ -50,7 +50,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Seka.Services
                 };
             }
 
-            var result = _backgammonTournamentRepository.GetTournaments(
+            var result = _sekaTournamentRepository.GetTournaments(
                  new Internal.TableGames.Seka.DTO.Tournament.TournamentsFilter
                  {
                      EndDateFrom = filter.EndDateFrom,

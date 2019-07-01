@@ -7,7 +7,7 @@ using Betsolutions.Casino.SDK.TableGames.Domino.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Domino.Services
 {
-    public class DominoTournamentService
+    public sealed class DominoTournamentService
     {
         private readonly DominoTournamentRepository _dominoTournamentRepository;
 

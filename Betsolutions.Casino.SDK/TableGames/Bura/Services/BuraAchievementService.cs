@@ -7,13 +7,13 @@ using Betsolutions.Casino.SDK.TableGames.Bura.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Bura.Services
 {
-    public class BuraAchievementService
+    public sealed class BuraAchievementService
     {
-        private readonly BuraAchievementRepository _backgammonAchievementRepository;
+        private readonly BuraAchievementRepository _buraAchievementRepository;
 
         public BuraAchievementService(MerchantAuthInfo merchantAuthInfo)
         {
-            _backgammonAchievementRepository = new BuraAchievementRepository(merchantAuthInfo);
+            _buraAchievementRepository = new BuraAchievementRepository(merchantAuthInfo);
         }
 
         private string ValidateRequestModel(BuraAchievementsFilter filter)
@@ -50,7 +50,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Bura.Services
                 };
             }
 
-            var result = _backgammonAchievementRepository.GetAchievements(
+            var result = _buraAchievementRepository.GetAchievements(
                 new Internal.TableGames.Bura.DTO.Achievement.AchievementsFilter
                 {
                     OrderingDirection = filter.OrderingDirection?.ToString(),

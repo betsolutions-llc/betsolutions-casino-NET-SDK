@@ -18,7 +18,7 @@ using SlotCampaignsPagingResult = Betsolutions.Casino.SDK.Slots.Campaigns.DTO.Sl
 
 namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
 {
-    public class SlotCampaignService : BaseService
+    public sealed class SlotCampaignService : BaseService
     {
         private readonly SlotCampaignRepository _slotCampaignRepository;
 

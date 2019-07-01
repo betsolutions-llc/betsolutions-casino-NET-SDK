@@ -7,13 +7,13 @@ using Betsolutions.Casino.SDK.TableGames.Bura.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Bura.Services
 {
-    public class BuraTournamentService
+    public sealed class BuraTournamentService
     {
-        private readonly BuraTournamentRepository _backgammonTournamentRepository;
+        private readonly BuraTournamentRepository _buraTournamentRepository;
 
         public BuraTournamentService(MerchantAuthInfo merchantAuthInfo)
         {
-            _backgammonTournamentRepository = new BuraTournamentRepository(merchantAuthInfo);
+            _buraTournamentRepository = new BuraTournamentRepository(merchantAuthInfo);
         }
 
         private string ValidateRequestModel(BuraTournamentsFilter filter)
@@ -50,7 +50,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Bura.Services
                 };
             }
 
-            var result = _backgammonTournamentRepository.GetTournaments(
+            var result = _buraTournamentRepository.GetTournaments(
                  new Internal.TableGames.Bura.DTO.Tournament.TournamentsFilter
                  {
                      EndDateFrom = filter.EndDateFrom,

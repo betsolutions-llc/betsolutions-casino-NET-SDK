@@ -7,13 +7,13 @@ using Betsolutions.Casino.SDK.TableGames.Seka.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Seka.Services
 {
-    public class SekaAchievementService
+    public sealed class SekaAchievementService
     {
-        private readonly SekaAchievementRepository _backgammonAchievementRepository;
+        private readonly SekaAchievementRepository _sekaAchievementRepository;
 
         public SekaAchievementService(MerchantAuthInfo merchantAuthInfo)
         {
-            _backgammonAchievementRepository = new SekaAchievementRepository(merchantAuthInfo);
+            _sekaAchievementRepository = new SekaAchievementRepository(merchantAuthInfo);
         }
 
         private string ValidateRequestModel(SekaAchievementsFilter filter)
@@ -50,7 +50,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Seka.Services
                 };
             }
 
-            var result = _backgammonAchievementRepository.GetAchievements(
+            var result = _sekaAchievementRepository.GetAchievements(
                 new Internal.TableGames.Seka.DTO.Achievement.AchievementsFilter
                 {
                     OrderingDirection = filter.OrderingDirection?.ToString(),

@@ -7,7 +7,7 @@ using Betsolutions.Casino.SDK.TableGames.Backgammon.Enums;
 
 namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
 {
-    public class BackgammonTournamentService
+    public sealed class BackgammonTournamentService
     {
         private readonly BackgammonTournamentRepository _backgammonTournamentRepository;
 
