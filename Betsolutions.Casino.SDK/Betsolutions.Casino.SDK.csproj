@@ -7,9 +7,9 @@
     <PackageIconUrl>https://static-cdn.betsolutions.com/casino/GameAssets/Prod/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
     <PackageReleaseNotes>fix minor bugs</PackageReleaseNotes>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
     <Company>Betsolutions</Company>
     <Authors>Betsolutions</Authors>
     <Product />
