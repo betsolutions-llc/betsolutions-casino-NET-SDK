@@ -2,12 +2,10 @@
 {
     public enum OkeyAchievementType
     {
-        Roll = 1,
+        SevenPair = 1,
         WinGame = 2,
         TournamentWin = 3,
-        Mars = 4,
-        DoubleMars = 5,
-        RoyalDefense = 6,
-        StoneKiller = 7
+        FinishJoker = 4,
+        FastWin = 5,
     }
 }
