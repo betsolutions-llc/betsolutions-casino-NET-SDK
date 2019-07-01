@@ -54,14 +54,14 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                  {
                      EndDateFrom = filter.EndDateFrom,
                      EndDateTo = filter.EndDateTo,
-                     GameTypeId = filter.GameTypeId,
+                     GameTypeId = (int?)filter.GameType,
                      OrderingDirection = filter.OrderingDirection,
                      OrderingField = filter.OrderingField,
                      PageIndex = filter.PageIndex,
                      PageSize = filter.PageSize,
                      StartDateFrom = filter.StartDateFrom,
                      StartDateTo = filter.StartDateTo,
-                     TournamentTypeId = filter.TournamentTypeId
+                     TournamentTypeId = (int?)filter.TournamentType
                  });
 
             if (200 != result.StatusCode)
