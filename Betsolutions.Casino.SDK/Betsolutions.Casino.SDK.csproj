@@ -16,12 +16,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="TableGames\Bura\**" />
-    <EmbeddedResource Remove="TableGames\Bura\**" />
-    <None Remove="TableGames\Bura\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="TableGames\Dominoes\" />
     <Folder Include="TableGames\Okey\" />
     <Folder Include="TableGames\Seka\" />
