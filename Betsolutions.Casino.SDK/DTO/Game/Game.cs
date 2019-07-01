@@ -6,7 +6,7 @@ namespace Betsolutions.Casino.SDK.DTO.Game
     {
         public int GameId { get; set; }
         public int ProductId { get; set; }
-        public bool HasFreeplay { get; set; }
+        public bool HasFreePlay { get; set; }
         public string Name { get; set; }
         public string LaunchUrl { get; set; }
         public int? RTP { get; set; }

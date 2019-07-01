@@ -35,7 +35,7 @@ namespace Betsolutions.Casino.SDK.Services
                         {
                             GameId = g.GameId,
                             ProductId = g.ProductId,
-                            HasFreeplay = g.HasFreeplay,
+                            HasFreePlay = g.HasFreeplay,
                             HasMobileDeviceSupport = g.HasMobileDeviceSupport,
                             LaunchUrl = g.LaunchUrl,
                             Name = g.Name,
