@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Betsolutions.Casino.SDK.Enums;
 using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.DTO;
 using Betsolutions.Casino.SDK.Internal.Slots.Campaigns.Repositories;
 using Betsolutions.Casino.SDK.Services;
@@ -26,23 +27,31 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             _slotCampaignRepository = new SlotCampaignRepository(authInfo);
         }
 
-        public CreateSlotCampaignResponseContainer CreateCampaign(CreateSlotCampaignRequest request)
+        private string ValidateCreateCampaignRequestModel(CreateSlotCampaignRequest request)
         {
             if (request.Name.Length < 10)
             {
-                return new CreateSlotCampaignResponseContainer
-                {
-                    StatusCode = StatusCodes.InvalidRequest,
-                    StatusMessage = "min name length: 10"
-                };
+                return "min name length: 10";
             }
 
             if (request.StartDate < DateTime.Now)
             {
+                return "start date must be more than current date";
+            }
+
+            return null;
+        }
+        
+        public CreateSlotCampaignResponseContainer CreateCampaign(CreateSlotCampaignRequest request)
+        {
+            var validationErrorMessage = ValidateCreateCampaignRequestModel(request);
+
+            if (null != validationErrorMessage)
+            {
                 return new CreateSlotCampaignResponseContainer
                 {
                     StatusCode = StatusCodes.InvalidRequest,
-                    StatusMessage = "start date must be more than current date"
+                    StatusMessage = validationErrorMessage
                 };
             }
 
@@ -103,8 +112,40 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
             };
         }
 
+        private string ValidateSlotCampaignSearchModel(SlotCampaignsSearchModel filter)
+        {
+            if (filter.PageIndex < 1)
+            {
+                return $"invalid {nameof(filter.PageIndex)}";
+            }
+
+            if (filter.PageSize < 1)
+            {
+                return $"invalid {nameof(filter.PageSize)}";
+            }
+
+            if (filter.OrderingDirection.HasValue
+                && !Enum.IsDefined(typeof(OrderingDirection), filter.OrderingDirection.Value))
+            {
+                return $"invalid {nameof(filter.OrderingDirection)}";
+            }
+
+            return null;
+        }
+
         public GetSlotCampaignsResponseContainer GetSlotCampaigns(SlotCampaignsSearchModel searchModel)
         {
+            var validationErrorMessage = ValidateSlotCampaignSearchModel(searchModel);
+
+            if (null != validationErrorMessage)
+            {
+                return new GetSlotCampaignsResponseContainer
+                {
+                    StatusCode = StatusCodes.InvalidRequest,
+                    Message = validationErrorMessage
+                };
+            }
+
             var result = _slotCampaignRepository.GetSlotCampaigns(new GetSlotCampaignsRequestModel
             {
                 CampaignId = searchModel.CampaignId,
@@ -112,7 +153,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.Services
                 EndDateTo = searchModel.EndDateTo,
                 GameId = searchModel.GameId,
                 Name = searchModel.Name,
-                OrderingDirection = searchModel.OrderingDirection,
+                OrderingDirection = searchModel.OrderingDirection?.ToString(),
                 OrderingField = searchModel.OrderingField,
                 PageIndex = searchModel.PageIndex,
                 PageSize = searchModel.PageSize,

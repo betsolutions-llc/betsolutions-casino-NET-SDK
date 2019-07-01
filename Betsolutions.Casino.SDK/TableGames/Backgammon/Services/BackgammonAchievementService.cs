@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Betsolutions.Casino.SDK.Enums;
 using Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories;
 using Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Achievement;
 using Betsolutions.Casino.SDK.TableGames.Backgammon.Enums;
@@ -26,9 +28,8 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                 return $"invalid {nameof(filter.PageSize)}";
             }
 
-            if (filter.OrderingDirection != null
-                && filter.OrderingDirection.ToLowerInvariant() != "asc"
-                && filter.OrderingDirection.ToLowerInvariant() != "desc")
+            if (filter.OrderingDirection.HasValue
+                && !Enum.IsDefined(typeof(OrderingDirection), filter.OrderingDirection.Value))
             {
                 return $"invalid {nameof(filter.OrderingDirection)}";
             }
@@ -52,21 +53,21 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
             var result = _backgammonAchievementRepository.GetAchievements(
                 new Internal.TableGames.Backgammon.DTO.Achievement.AchievementsFilter
                 {
-                    OrderingDirection = filter.OrderingDirection,
+                    OrderingDirection = filter.OrderingDirection?.ToString(),
                     OrderingField = filter.OrderingField,
                     PageIndex = filter.PageIndex,
                     PageSize = filter.PageSize,
-                    AchievementTypeId = (int?) filter.AchievementType
+                    AchievementTypeId = (int?)filter.AchievementType
                 });
 
             if (200 != result.StatusCode)
             {
-                return new GetBackgammonAchievementsResult {StatusCode = (StatusCodes) result.StatusCode};
+                return new GetBackgammonAchievementsResult { StatusCode = (StatusCodes)result.StatusCode };
             }
 
             return new GetBackgammonAchievementsResult
             {
-                StatusCode = (StatusCodes) result.StatusCode,
+                StatusCode = (StatusCodes)result.StatusCode,
                 Data = new BackgammonAchievementPagingResult
                 {
                     TotalCount = result.Data.TotalCount,

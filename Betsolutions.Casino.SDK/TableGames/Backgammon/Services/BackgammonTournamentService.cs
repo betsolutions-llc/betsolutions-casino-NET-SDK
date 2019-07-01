@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Betsolutions.Casino.SDK.Enums;
 using Betsolutions.Casino.SDK.Internal.TableGames.Backgammon.Repositories;
 using Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament;
 using Betsolutions.Casino.SDK.TableGames.Backgammon.Enums;
@@ -26,9 +28,8 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                 return $"invalid {nameof(filter.PageSize)}";
             }
 
-            if (filter.OrderingDirection != null
-                && filter.OrderingDirection.ToLowerInvariant() != "asc"
-                && filter.OrderingDirection.ToLowerInvariant() != "desc")
+            if (filter.OrderingDirection.HasValue
+                && !Enum.IsDefined(typeof(OrderingDirection), filter.OrderingDirection.Value))
             {
                 return $"invalid {nameof(filter.OrderingDirection)}";
             }
@@ -55,7 +56,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                      EndDateFrom = filter.EndDateFrom,
                      EndDateTo = filter.EndDateTo,
                      GameTypeId = (int?)filter.GameType,
-                     OrderingDirection = filter.OrderingDirection,
+                     OrderingDirection = filter.OrderingDirection?.ToString(),
                      OrderingField = filter.OrderingField,
                      PageIndex = filter.PageIndex,
                      PageSize = filter.PageSize,

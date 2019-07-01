@@ -4,5 +4,6 @@
     {
         public StatusCodes StatusCode { get; set; }
         public GetSlotCampaignsResponse Data { get; set; }
+        public string Message { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Betsolutions.Casino.SDK.Enums;
 using Betsolutions.Casino.SDK.Slots.Campaigns.Enums;
 
 namespace Betsolutions.Casino.SDK.Slots.Campaigns.DTO
@@ -15,7 +16,7 @@ namespace Betsolutions.Casino.SDK.Slots.Campaigns.DTO
         public int? PageSize { get; set; }
         public int PageIndex { get; set; }
         public string OrderingField { get; set; }
-        public string OrderingDirection { get; set; }
+        public OrderingDirection? OrderingDirection { get; set; }
         public int? CampaignId { get; set; }
     }
 }
