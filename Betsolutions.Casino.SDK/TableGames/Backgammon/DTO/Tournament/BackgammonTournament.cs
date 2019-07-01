@@ -16,7 +16,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public BackgammonTournamentStatus Status { get; set; }
-        public int GameTypeId { get; set; }
+        public BackgammonGameType GameType { get; set; }
         public DateTime CreateDate { get; set; }
         public bool IsHidden { get; set; }
         public IEnumerable<BackgammonTournamentTranslation> Translations { get; set; }

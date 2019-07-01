@@ -83,7 +83,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                         EndDate = i.EndDate,
                         FilteredCount = i.FilteredCount,
                         FinalPoint = i.FinalPoint,
-                        GameTypeId = i.GameTypeId,
+                        GameType = (BackgammonGameType)i.GameTypeId,
                         Id = i.Id,
                         IsHidden = i.IsHidden,
                         IsNetwork = i.IsNetwork,
