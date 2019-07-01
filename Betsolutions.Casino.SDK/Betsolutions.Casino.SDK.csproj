@@ -16,9 +16,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TableGames\Dominoes\" />
-    <Folder Include="TableGames\Okey\" />
-    <Folder Include="TableGames\Seka\" />
+    <Compile Remove="TableGames\Dominoes\**" />
+    <Compile Remove="TableGames\Okey\**" />
+    <Compile Remove="TableGames\Seka\**" />
+    <EmbeddedResource Remove="TableGames\Dominoes\**" />
+    <EmbeddedResource Remove="TableGames\Okey\**" />
+    <EmbeddedResource Remove="TableGames\Seka\**" />
+    <None Remove="TableGames\Dominoes\**" />
+    <None Remove="TableGames\Okey\**" />
+    <None Remove="TableGames\Seka\**" />
   </ItemGroup>
 
   <ItemGroup>
