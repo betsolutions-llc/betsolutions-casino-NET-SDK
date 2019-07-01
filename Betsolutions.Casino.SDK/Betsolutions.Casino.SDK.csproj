@@ -6,10 +6,10 @@
     <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
     <PackageIconUrl>https://static-cdn.betsolutions.com/casino/GameAssets/Prod/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
-    <PackageReleaseNotes>added full support of slot campaigns</PackageReleaseNotes>
+    <PackageReleaseNotes>added backgammon tournaments and achievements</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>0.5.0</Version>
+    <Version>0.6.0</Version>
     <Company>Betsolutions</Company>
     <Authors>Betsolutions</Authors>
     <Product />
