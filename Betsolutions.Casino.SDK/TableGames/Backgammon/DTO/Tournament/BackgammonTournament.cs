@@ -12,7 +12,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.DTO.Tournament
         public int MaxPlayerCount { get; set; }
         public int MinPlayerCount { get; set; }
         public int RegisteredPlayerCount { get; set; }
-        public int TournamentTypeId { get; set; }
+        public BackgammonTournamentType TournamentType { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public BackgammonTournamentStatus Status { get; set; }

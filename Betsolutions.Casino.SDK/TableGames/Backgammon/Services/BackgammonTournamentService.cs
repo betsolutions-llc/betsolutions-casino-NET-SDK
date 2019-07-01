@@ -78,7 +78,7 @@ namespace Betsolutions.Casino.SDK.TableGames.Backgammon.Services
                     TotalCount = result.Data.TotalCount,
                     Tournaments = result.Data.Tournaments.Select(i => new BackgammonTournament
                     {
-                        TournamentTypeId = i.TournamentTypeId,
+                        TournamentType = (BackgammonTournamentType)i.TournamentTypeId,
                         BetAmount = i.BetAmount,
                         CreateDate = i.CreateDate,
                         EndDate = i.EndDate,
