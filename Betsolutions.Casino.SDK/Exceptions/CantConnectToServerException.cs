@@ -23,5 +23,10 @@ namespace Betsolutions.Casino.SDK.Exceptions
         public string Content { get; }
         public string ResponseUri { get; }
         public string StatusDescription { get; }
+
+        public override string ToString()
+        {
+            return $"{nameof(HttpStatusCode)}: {HttpStatusCode}, {nameof(ResponseUri)}: {ResponseUri}, {nameof(StatusDescription)}: {StatusDescription}, {nameof(Content)}: {Content}";
+        }
     }
 }
