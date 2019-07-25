@@ -45,7 +45,8 @@ namespace Betsolutions.Casino.SDK.Services
                             {
                                 Height = t.Height,
                                 Url = t.Url,
-                                Width = t.Width
+                                Width = t.Width,
+                                Lang = t.Lang
                             })
                         })
                     })
