@@ -6,10 +6,10 @@
     <PackageProjectUrl>betsolutions.com</PackageProjectUrl>
     <PackageIconUrl>https://static-cdn.betsolutions.com/casino/GameAssets/Prod/betsolutions_256.png</PackageIconUrl>
     <PackageTags>Betsolutions</PackageTags>
-    <PackageReleaseNotes>improved exception handling</PackageReleaseNotes>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
-    <Version>1.0.3</Version>
+    <PackageReleaseNotes>added lang in game thumbnail url</PackageReleaseNotes>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
     <Company>Betsolutions</Company>
     <Authors>Betsolutions</Authors>
     <Product />
