@@ -11,8 +11,6 @@ namespace Betsolutions.Casino.SDK.TableGames.Bura.DTO.Achievement
         public BuraAchievementType AchievementType { get; set; }
         public int Count { get; set; }
         public int MinRank { get; set; }
-        public int? Dice1 { get; set; }
-        public int? Dice2 { get; set; }
         public double Prize { get; set; }
         public bool IsActive { get; set; }
         public IEnumerable<BuraAchievementTranslation> Translations { get; set; }
